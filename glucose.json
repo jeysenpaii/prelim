@@ -1,0 +1,30 @@
+glucose =
+[
+    {
+    "glucose_id": 1,
+    "date": "October 4, 2022",
+    "glucose": "90mg"
+    }
+    {
+    "glucose_id": 2,
+    "date": "October 4, 2022",
+    "glucose": "80mg"
+    }
+]
+@app.route('/addGlucose', methods = ['POST'])
+
+def addTemperature():
+    tmp = request.get_json()
+    temperature.append(tmp)
+    return {'id':len(temperature)}, 200
+
+@app.route('/searchTemperature/<int:index>', methods=['GET'])
+def getTemperature(index):
+    if index < len(temperature):
+        return jsonify(temperature[index]), 200
+    else:
+        return "Temperature id not found", 404
+
+
+
+
